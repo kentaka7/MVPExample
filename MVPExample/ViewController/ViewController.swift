@@ -8,11 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,JsonsDataPresenterProtocol {
+
+    fileprivate var presenter: JsonsDataPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.setupPresenter()
+    }
+
+    func showArticle(_ JsonsData: JsonsData) {
+        //articleContents.append(article)
+    }
+
+    private func setupPresenter() {
+        presenter = JsonsDataPresenter(presenter: self)
+        presenter.getDataList()
     }
 
     override func didReceiveMemoryWarning() {
